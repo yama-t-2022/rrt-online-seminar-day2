@@ -38,7 +38,7 @@ export const counterSlice = createSlice({
       .addCase(incrementAsync.fulfilled, (state, action) => {
         // fulfilledに一回呼ばれる  fulfilled: 非同期処理の成功時
         console.log("Called when incrementAsync.fulfilled");
-        state.value += action.payload;
+        state.value += action.payload + 2;
       })
       .addCase(incrementAsync.rejected, (state, action) => {
         // rejected時に一回呼ばれる  rejected: 非同期処理の失敗時
