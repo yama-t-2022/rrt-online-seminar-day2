@@ -1,8 +1,11 @@
 import type { FC } from "react";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
+import { remove, selectTodos } from "../todosSlice";
 
 export const TodoList: FC = () => {
-  const todos = useAppSelector((state) => state.todos.todos);
+  //const todos = useAppSelector((state) => state.todos.todos);
+  const todos = useAppSelector(selectTodos);
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -41,7 +44,7 @@ export const TodoList: FC = () => {
                   <td>
                     <button
                       onClick={() => {
-                        //TODO: 更新機能の実装
+                        //TODO:更新機能の実装
                       }}
                     >
                       更新
@@ -50,7 +53,8 @@ export const TodoList: FC = () => {
                   <td>
                     <button
                       onClick={() => {
-                        //TODO: 削除機能の実装
+                        // 削除機能の実装
+                        dispatch(remove(todo.id));
                       }}
                     >
                       削除
