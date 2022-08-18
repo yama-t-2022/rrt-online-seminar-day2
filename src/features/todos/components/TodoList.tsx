@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
-import { remove, selectTodos } from "../todosSlice";
+import { remove, update, selectTodos } from "../todosSlice";
 
 export const TodoList: FC = () => {
   //const todos = useAppSelector((state) => state.todos.todos);
@@ -44,7 +44,16 @@ export const TodoList: FC = () => {
                   <td>
                     <button
                       onClick={() => {
-                        //TODO:更新機能の実装
+                        //更新機能
+                        //
+                        const updateAction = update({
+                          id: todo.id,
+                          input: {
+                            title: "更新したtitle" + Date.now(),
+                            body: "更新したbody " + Date.now(),
+                          },
+                        });
+                        dispatch(updateAction);
                       }}
                     >
                       更新
